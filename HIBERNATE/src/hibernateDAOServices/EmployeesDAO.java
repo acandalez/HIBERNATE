@@ -24,15 +24,40 @@ public class EmployeesDAO {
 		this.sesion = sesion;
 	}
 
-	public List<Employees> obtenerEmpleado() {//obtiene empleados
+	public List<Employees> obtenerEmpleado() {// obtiene empleados
 		List<Employees> ls = null;
 
-		ls = this.getSesion().createSQLQuery(InstruccionesSQL.Consultar_Todos)
+		ls = this.getSesion()
+				.createSQLQuery(InstruccionesSQL.COSULTAR_EMPLEADO_X_ID)
 				.addEntity(Employees.class).list();
 
 		return ls;
 
 	}
-	
+
+	public List<Employees> obtenerEmpleadoMejorPagadoPorDepartamento() {
+		List<Employees> ls = null;
+
+		return ls;
+
+	}
+
+	public List<Employees> obtenerEmpleados() {// obtiene empleados
+		List<Employees> ls = null;
+
+		ls = this
+				.getSesion()
+				.createSQLQuery(
+						InstruccionesSQL.CONSULTAR_EMPLEADOS_X_DEPARTAMENTOS)
+				.addEntity(Employees.class).list();
+
+		return ls;
+
+	}
+
+	public Employees read(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

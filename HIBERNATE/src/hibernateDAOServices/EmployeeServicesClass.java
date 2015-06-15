@@ -71,31 +71,31 @@ public class EmployeeServicesClass {
 																			// por
 																			// 1.2
 		}
-		
 
 	}
-	
-	/**Hacer un servicio que me devuelva una lista del empleado mejor pagado de cada departamento.
+
+	/**
+	 * Hacer un servicio que me devuelva una lista del empleado mejor pagado de
+	 * cada departamento.
 	 * 
 	 */
-	public List<Employees> empleadoMejorSalarioPorDepartamento () {
-		
+	public List<Employees> empleadoMejorSalarioPorDepartamento() {
+
 		List<Employees> empleadoMejorSalario = null;
-		
+
 		//
 		Session sesion = null;
 
 		Transaction transaction = null;
 		List<Employees> lista_empleados2 = null;
-		
+
 		try {
 			sesion = SesionManager.obtenerSesionNueva();
 			transaction = sesion.beginTransaction();
-			
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			transaction.rollback();
-			
+
 			e.printStackTrace();
 
 		} finally {
@@ -103,8 +103,42 @@ public class EmployeeServicesClass {
 			SesionManager.cerrarSession(sesion);
 
 		}
-		
+
 		return empleadoMejorSalario;
+
+	}
+
+	/**
+	 * hacer un serivicio que obtenga los empleados por la id del departamento
+	 */
+
+	public List<Employees> obtenerEmpleadosPorDepartamento (Object department){
+		List<Employees> ls = null;
 		
+		Session sesion = null;
+		Transaction transaction = null;
+		List<Employees> ls2 = null;
+		
+		try {
+			sesion = SesionManager.obtenerSesionNueva();
+			transaction = sesion.beginTransaction();
+			eDAO.setSesion(sesion);
+			ls2 = eDAO.();
+			actualizarSalario(lista_empleados);// act
+			transaction.commit();
+
+		} catch (Exception e) {
+			transaction.rollback();
+
+			e.printStackTrace();
+
+		} finally {
+
+			SesionManager.cerrarSession(sesion);
+
+		}
+
+		return ls;
+
 	}
 }
