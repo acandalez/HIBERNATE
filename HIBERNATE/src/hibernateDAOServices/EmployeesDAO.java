@@ -24,14 +24,15 @@ public class EmployeesDAO {
 		this.sesion = sesion;
 	}
 
-	public List<Employees> obtenerEmpleado() {
+	public List<Employees> obtenerEmpleado() {//obtiene empleados
 		List<Employees> ls = null;
 
-		ls = this.getSesion().createSQLQuery("select * from employees")
+		ls = this.getSesion().createSQLQuery(InstruccionesSQL.Consultar_Todos)
 				.addEntity(Employees.class).list();
 
 		return ls;
 
 	}
+	
 
 }

@@ -71,7 +71,40 @@ public class EmployeeServicesClass {
 																			// por
 																			// 1.2
 		}
-		;
+		
 
+	}
+	
+	/**Hacer un servicio que me devuelva una lista del empleado mejor pagado de cada departamento.
+	 * 
+	 */
+	public List<Employees> empleadoMejorSalarioPorDepartamento () {
+		
+		List<Employees> empleadoMejorSalario = null;
+		
+		//
+		Session sesion = null;
+
+		Transaction transaction = null;
+		List<Employees> lista_empleados2 = null;
+		
+		try {
+			sesion = SesionManager.obtenerSesionNueva();
+			transaction = sesion.beginTransaction();
+			
+			
+		}catch (Exception e) {
+			transaction.rollback();
+			
+			e.printStackTrace();
+
+		} finally {
+
+			SesionManager.cerrarSession(sesion);
+
+		}
+		
+		return empleadoMejorSalario;
+		
 	}
 }
