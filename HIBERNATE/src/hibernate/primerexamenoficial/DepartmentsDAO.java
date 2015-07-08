@@ -1,15 +1,22 @@
 package hibernate.primerexamenoficial;
+
+import hibernate.primerexamenoficial.dto.Departments;
+
 import java.util.List;
 
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
-import hibernate.primerexamenoficial.dto.Departments;
-
-public class DepartmentsDAO extends SuperClassDAO implements CRUD{
+/**
+ * DEPARTAMENTOS DAO.
+ * 
+ * @author Alexander Acanda
+ *
+ */
+public class DepartmentsDAO extends SuperClassDAO implements CRUD {
 
 	private SesionManager sm;
-	
+
 	@Override
 	public Object create(Object c) {
 		// TODO Auto-generated method stub
@@ -34,7 +41,6 @@ public class DepartmentsDAO extends SuperClassDAO implements CRUD{
 		return null;
 	}
 
-	
 	/**
 	 * @return lista de departamentos dada su id.
 	 * 
@@ -45,12 +51,14 @@ public class DepartmentsDAO extends SuperClassDAO implements CRUD{
 		// TODO Auto-generated method stub
 		List<Departments> ls = null;
 		SQLQuery ls1 = null;
-		
-		Session conex=sm.obtenerSesionNueva();
 
-		ls1 = conex.createSQLQuery(InstruccionesSQL.CONSULTAR_DEPARTAMENTO_X_ID);
-		//ls =  this.getSesion().createSQLQuery(InstruccionesSQL.CONSULTAR_DEPARTAMENTO_X_ID);
-		
+		Session conex = sm.obtenerSesionNueva();
+
+		ls1 = conex
+				.createSQLQuery(InstruccionesSQL.CONSULTAR_DEPARTAMENTO_X_ID);
+		// ls =
+		// this.getSesion().createSQLQuery(InstruccionesSQL.CONSULTAR_DEPARTAMENTO_X_ID);
+
 		return ls;
 	}
 
@@ -58,6 +66,5 @@ public class DepartmentsDAO extends SuperClassDAO implements CRUD{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 
 }

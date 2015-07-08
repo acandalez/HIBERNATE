@@ -1,18 +1,17 @@
-package hibernate.primerexamenoficial;
+package hibernate.jpa;
 
+import hibernate.primerexamenoficial.Iemployees;
+import hibernate.primerexamenoficial.InstruccionesSQL;
+import hibernate.primerexamenoficial.SesionManager;
+import hibernate.primerexamenoficial.SuperClassDAO;
 import hibernate.primerexamenoficial.dto.Employees;
 
 import java.util.List;
 
 import org.hibernate.SQLQuery;
 
-/**
- * EMPLEADO DAO.
- * 
- * @author Alexander Acanda
- *
- */
-public class EmpleadoDAO extends SuperClassDAO implements Iemployees {
+public class EmpleadoDAO extends SuperClassDAO implements Iemployees,
+		Recuperable {
 
 	private SesionManager sm;
 
@@ -94,6 +93,20 @@ public class EmpleadoDAO extends SuperClassDAO implements Iemployees {
 						+ department)).addEntity(Employees.class).list();
 
 		return ls;
+	}
+
+	@Override
+	public Object ReadEmployee(int n) {
+		// TODO Auto-generated method stub// creamos el objeto empleado.
+		Employees em = new Employees();
+		// Le asignamos una sesion y una sentencia que en este caso es leer
+		// empleado dada su ID(cuando busque el empleado debe de darnos un unico
+		// resultado).
+		em = (Employees) sm.obtenerSesionNueva()
+				.createSQLQuery(InstruccionesSQL.COSULTAR_EMPLEADO_X_ID)
+				.addEntity(Employees.class).uniqueResult();
+
+		return em;
 	}
 
 }

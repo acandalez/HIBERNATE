@@ -1,2 +1,9 @@
-/hibernateDAOServices/
-/hibernate/
+/Countries.hbm.xml
+/Departments.hbm.xml
+/EmpDetailsView.hbm.xml
+/Employees.hbm.xml
+/JobHistory.hbm.xml
+/Jobs.hbm.xml
+/Locations.hbm.xml
+/Regions.hbm.xml
+/clases_y_mapas_codegeneration/
